@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := main
+.DEFAULT_GOAL := help
 .PHONY: main bootstrap
 
 #main: galaxy_roles
