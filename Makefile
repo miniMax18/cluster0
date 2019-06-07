@@ -1,4 +1,4 @@
-.DEFAULT_GOAL := main
+.DEFAULT_GOAL := help
 .PHONY: main bootstrap
 
 #main: galaxy_roles
@@ -14,6 +14,9 @@ cluster-up:
 	grep host < inventory | cut -d'=' -f 3 | xargs wakeonlan
 cluster-down:
 	ansible all -i inventory -b -K -m command -a poweroff
+
+galaxy_roles: requirements.yml
+	ansible-galaxy install --force -r requirements.yml --roles-path galaxy_roles
 
 .PHONY: clean
 clean:
