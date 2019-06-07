@@ -11,6 +11,16 @@
       notify:
         - restart systemd-logind
       become: yes
+
+    - name: install Docker
+      include_role:
+        name: geerlingguy.docker
+        apply:
+          become:
+            yes
+      vars:
+        docker_users:
+          - hsop
   handlers:
     - name: restart systemd-logind
       service:
